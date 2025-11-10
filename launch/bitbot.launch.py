@@ -30,7 +30,7 @@ def generate_launch_description():
     )
 
     bitbot_node = Node(
-        package="bitbot_gz",
+        package="ovinf_ros2",
         executable="main_app",
         name="main_app",
         output="screen",

@@ -71,9 +71,9 @@ target_link_libraries(main_app
   BitbotCifx
   BitbotKernel
   ovinf
-  ${LIBNL_LIBRARIES}
-  "/lib/x86_64-linux-gnu/libnl-cli-3.so"
-  ${LIBNL_ROUTE_LIBRARIES}
+  # ${LIBNL_LIBRARIES}
+  # "/lib/x86_64-linux-gnu/libnl-cli-3.so"
+  # ${LIBNL_ROUTE_LIBRARIES}
 )
 
 target_compile_options(main_app PUBLIC)
