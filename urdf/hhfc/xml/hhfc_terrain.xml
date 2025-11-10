@@ -1,0 +1,243 @@
+<mujoco model="hhfc">
+  <compiler angle="radian" meshdir="../meshes/" eulerseq="zyx" />
+  <statistic meansize="0.201559" extent="2.948112" center="0.00499457 0 0.337764" />
+
+  <default>
+      <joint limited="true" />
+      <motor ctrllimited="true" />
+      <geom condim="4" contype="1" conaffinity="15" solref="0.001 2" friction="0.9 0.2 0.2" />
+      <equality solref="0.001 2" />
+      <default class="visualgeom">
+          <geom material="visualgeom" condim="1" contype="0" conaffinity="0" />
+      </default>
+      <default class="visualgeom2">
+          <geom material="visualgeom2" condim="1" contype="0" conaffinity="0" />
+      </default>
+      <default class="obstacle">
+          <geom material="obstacle" condim="3" contype="1" conaffinity="15" />
+      </default>
+      <default class="leg_joint_param">
+      <joint damping="0.01" frictionloss="0.01" armature="0.001" />
+          
+          
+      </default>
+  </default>
+
+  <asset>
+    
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4" />
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2" />
+  </asset>
+
+  <option timestep="0.0005" integrator="RK4">
+    <flag frictionloss="enable" />
+  </option>
+
+  <visual>
+    <map stiffness="300" force="0.1" zfar="30" />
+    <rgba haze="0.15 0.25 0.35 1" />
+    <global offwidth="2560" offheight="1440" elevation="-30" azimuth="120" />
+  </visual>
+
+  <asset>
+    <mesh name="base_thorax" file="base_thorax.STL" />
+    <mesh name="Lleg_hip_p" file="Lleg_hip_p.STL" />
+    <mesh name="Lleg_hip_r" file="Lleg_hip_r.STL" />
+    <mesh name="Lleg_hip_y" file="Lleg_hip_y.STL" />
+    <mesh name="Lleg_knee" file="Lleg_knee.STL" />
+    <mesh name="Lleg_ankle_p" file="Lleg_ankle_p.STL" />
+    <mesh name="Lleg_ankle_r" file="flat_foot.stl" />
+    <mesh name="Rleg_hip_p" file="Rleg_hip_p.STL" />
+    <mesh name="Rleg_hip_r" file="Rleg_hip_r.STL" />
+    <mesh name="Rleg_hip_y" file="Rleg_hip_y.STL" />
+    <mesh name="Rleg_knee" file="Rleg_knee.STL" />
+    <mesh name="Rleg_ankle_p" file="Rleg_ankle_p.STL" />
+    <mesh name="Rleg_ankle_r" file="flat_foot.stl" />
+    <mesh name="Larm_shoulder_p" file="Larm_shoulder_p.STL" />
+    <mesh name="Rarm_shoulder_p" file="Rarm_shoulder_p.STL" />
+
+    
+    
+    
+    
+  </asset>
+
+  <worldbody>
+    
+    <light name="main_light" diffuse="2 2 2" specular="0.5 0.5 0.5" pos="0 0 40" dir="0 0 -1" castshadow="true" />
+    
+    <light name="aux_light1" diffuse=".8 .8 .8" pos=" 10 0 1" dir="-1 0 0" castshadow="false" />
+    <light name="aux_light2" diffuse=".8 .8 .8" pos="-10 0 1" dir=" 1 0 0" castshadow="false" />
+    <light name="aux_light3" diffuse=".8 .8 .8" pos="0  10 1" dir="0 -1 0" castshadow="false" />
+    <light name="aux_light4" diffuse=".8 .8 .8" pos="0 -10 1" dir="0  1 0" castshadow="false" />
+    
+    <geom name="floor" type="plane" size="0 0 0.05" material="grid" />
+
+    <body name="base_thorax" pos="0 0 0.94" euler="0 0 0">
+      
+      <inertial pos="0.0063842 0.00017156 0.099276" mass="21.7513" fullinertia="0.51774 0.41969 0.193013 3.96E-05 0.000772 0.000516" />
+      <freejoint name="base_thorax" />
+      <geom size="0.2 0.175 0.3" pos="0 0 0.2" type="box" rgba="0.89804 0.91765 0.92941 0" />
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="base_thorax" />
+      <site name="imu_site" pos="0 0 0" size="0.02" rgba="1 0 0 1" type="sphere" />
+      <site name="imu" size="0.01" pos="0.0 0 0.0" />
+
+      <body name="Lleg_hip_p" pos="0.0074413 0.070763 -0.096701" quat="1 -1.49195e-05 9.221e-11 -6.1805e-06">
+        
+        <inertial pos="-0.0080076 0.037645 -0.018534" quat="0.414257 0.709337 0.188122 0.53837" mass="0.8" diaginertia="0.00249693 0.00187387 0.00185259" />
+        <joint name="Lleg_hip_p_joint" pos="0 0 0" axis="0 -1 0" range="-1.5708 3.1416" class="leg_joint_param" />
+        
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Lleg_hip_p" />
+
+        <body name="Lleg_hip_r" pos="-0.048264 0.063739 -0.039998" quat="1 -1.49194e-05 -1.55901e-05 6.18077e-06">
+          
+          <inertial pos="0.042398 0.0021906 -0.014152" quat="0.717776 -0.00466495 -0.115772 0.686566" mass="2.4" diaginertia="0.00470642 0.00421976 0.00322592" />
+          <joint name="Lleg_hip_r_joint" pos="0 0 0" axis="1 0 0" range="-0.52359 0.52359" class="leg_joint_param" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Lleg_hip_r" />
+          <geom size="0.05 0.1" pos="0.05 0 -0.225" type="cylinder" rgba="0.89804 0.91765 0.92941 0" />
+
+          <body name="Lleg_hip_y" pos="0.048263 0.0075949 -0.073228" quat="1 -0.0006421 0 0">
+            
+            <inertial pos="0.0012794 -0.012189 -0.11613" quat="0.996816 -0.0530944 -0.0162506 -0.0572273" mass="4.7" diaginertia="0.0299281 0.0291921 0.00657282" />
+            <joint name="Lleg_hip_y_joint" pos="0 0 0" axis="0 0 1" range="-1.0472 1.2217" class="leg_joint_param" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="Lleg_hip_y" />
+
+            <body name="Lleg_knee" pos="0 0 -0.27926">
+              
+              <inertial pos="-0.0093168 0.0004254 -0.1569" quat="0.997868 -0.0245164 0.0336298 0.0502756" mass="4.4" diaginertia="0.033405 0.0314582 0.0069106" />
+              <joint name="Lleg_knee_joint" pos="0 0 0" axis="0 -1 0" range="-1.5708 0" class="leg_joint_param" />
+              
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Lleg_knee" />
+              <geom size="0.05 0.125" pos="0 0 -0.175" type="cylinder" rgba="0.89804 0.91765 0.92941 0" />
+
+              <body name="Lleg_ankle_p" pos="0 0 -0.35">
+                
+                <inertial pos="0.00066352 -5.5018e-08 8.196e-09" quat="0.499943 0.499943 -0.500057 0.500057" mass="0.24" diaginertia="0.000135 0.000113 5.24e-05" />
+                <joint name="Lleg_ankle_p_joint" pos="0 0 0" axis="0 1 0" range="-1.6108 0.6108" class="leg_joint_param" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Lleg_ankle_p" />
+
+                <body name="Lleg_ankle_r">
+                  
+                  <inertial pos="0.021653 2.4998e-08 -0.044273" quat="1.13655e-06 0.717415 -1.10364e-06 0.696646" mass="0.88" diaginertia="0.00668964 0.005724 0.00130736" />
+                  <joint name="Lleg_ankle_r_joint" pos="0 0 0" axis="1 0 0" range="-0.34453292519943295 0.34453292519943295" class="leg_joint_param" />
+                  <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Lleg_ankle_r" />
+                  <geom name="r_collision_1" type="mesh" rgba="0.89804 0.91765 0.92941 0" mesh="Lleg_ankle_r" />
+                  
+                  
+                  
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+
+      <body name="Rleg_hip_p" pos="0.0074402 -0.070762 -0.096701" quat="1 1.49195e-05 -9.221e-11 -6.1805e-06">
+        
+        <inertial pos="-0.0080033 -0.037645 -0.018534" quat="0.709009 0.414898 0.538551 0.187424" mass="0.8" diaginertia="0.00249686 0.00187362 0.00185253" />
+        <joint name="Rleg_hip_p_joint" pos="0 0 0" axis="0 -1 0" range="-1.5708 3.1416" class="leg_joint_param" />
+        
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Rleg_hip_p" />
+
+        <body name="Rleg_hip_r" pos="-0.048261 -0.063738 -0.039998" quat="1 -1.49194e-05 -1.55901e-05 6.18077e-06">
+          
+          <inertial pos="0.042392 -0.0022474 -0.014239" quat="0.688789 -0.114585 -0.00306577 0.715843" mass="2.4" diaginertia="0.00471825 0.00423405 0.00323269" />
+          <joint name="Rleg_hip_r_joint" pos="0 0 0" axis="1 0 0" range="-0.52359 0.52359" class="leg_joint_param" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="Rleg_hip_r" />
+          <geom size="0.05 0.1" pos="0.05 0 -0.225" type="cylinder" rgba="0.75294 0.75294 0.75294 0" />
+
+          <body name="Rleg_hip_y" pos="0.048263 -0.0075949 -0.073228" quat="1 -0.0006421 1.559e-05 1.00103e-08">
+            
+            <inertial pos="0.0012651 0.012199 -0.11598" quat="0.996226 0.0535852 -0.0154666 0.0665041" mass="4.7" diaginertia="0.0298237 0.0290669 0.00653037" />
+            <joint name="Rleg_hip_y_joint" pos="0 0 0" axis="0 0 1" range="-1.2217 1.0472" class="leg_joint_param" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="Rleg_hip_y" />
+
+            <body name="Rleg_knee" pos="0 0 -0.27926">
+              
+              <inertial pos="-0.0080323 -0.0016076 -0.15944" quat="0.503618 0.498429 -0.471667 0.524851" mass="4.4" diaginertia="0.0334195 0.0311732 0.00644732" />
+              <joint name="Rleg_knee_joint" pos="0 0 0" axis="0 -1 0" range="-1.5708 0" class="leg_joint_param" />
+              
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Rleg_knee" />
+              <geom size="0.05 0.125" pos="0 0 -0.175" type="cylinder" rgba="0.89804 0.91765 0.92941 0" />
+
+              <body name="Rleg_ankle_p" pos="0 0 -0.35">
+                
+                <inertial pos="0.00099756 8.2521e-08 6.9572e-08" quat="0.5 0.5 -0.5 0.5" mass="0.24" diaginertia="0.000135 0.000113 5.3e-05" />
+                <joint name="Rleg_ankle_p_joint" pos="0 0 0" axis="0 1 0" range="-1.6108 0.6108" class="leg_joint_param" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Rleg_ankle_p" />
+
+                <body name="Rleg_ankle_r">
+                  
+                  <inertial pos="0.021653 2.5592e-08 -0.044273" quat="0 0.717415 0 0.696646" mass="0.88" diaginertia="0.00668964 0.005725 0.00130736" />
+                  <joint name="Rleg_ankle_r_joint" pos="0 0 0" axis="1 0 0" range="-0.34453292519943295 0.34453292519943295" class="leg_joint_param" />
+                  <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Rleg_ankle_r" />
+                  <geom name="l_collision_1" type="mesh" rgba="0.89804 0.91765 0.92941 0" mesh="Lleg_ankle_r" />
+                  
+                  
+                  
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="Larm_shoulder_p" pos="0.0074411 0.17676 0.2503" quat="1 -1.559e-05 0 0">
+        
+        <inertial pos="-4.0039e-06 0.029969 -0.17382" quat="0.706747 0.0225512 -0.0225512 0.706747" mass="0.9" diaginertia="0.0219046 0.021867 0.000591376" />
+        <joint name="Larm_shoulder_p_joint" pos="0 0 0" axis="0 -1 0" range="-3.1416 3.1416" class="leg_joint_param" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Larm_shoulder_p" />
+      </body>
+
+      <body name="Rarm_shoulder_p" pos="0.0074404 -0.17676 0.2503" quat="1 1.55905e-05 0.0008107 -1.26392e-08">
+        
+        <inertial pos="0.00016699 -0.03005 -0.17441" quat="0.706778 -0.0228932 0.0222331 0.706716" mass="0.9" diaginertia="0.0219559 0.021918 0.000591056" />
+        <joint name="Rarm_shoulder_p_joint" pos="0 0 0" axis="0 -1 0" range="-3.1416 3.1416" class="leg_joint_param" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="Rarm_shoulder_p" />
+      </body>
+    </body>
+
+  <geom pos="1.7 0.0 0.075" type="box" size="0.1 0.75 0.075" quat="1.0 0.0 0.0 0.0" rgba="0.5397997475476835 0.07426366960848095 0.3859365828438356 0.95" /><geom pos="1.9 0.0 0.22499999999999998" type="box" size="0.1 0.75 0.075" quat="1.0 0.0 0.0 0.0" rgba="0.3750912169712648 0.3590917137309976 0.26581706929773763 0.95" /><geom pos="2.1 0.0 0.375" type="box" size="0.1 0.75 0.075" quat="1.0 0.0 0.0 0.0" rgba="0.7567677870938795 0.12244413676564676 0.12078807614047375 0.95" /><geom pos="2.3 0.0 0.525" type="box" size="0.1 0.75 0.075" quat="1.0 0.0 0.0 0.0" rgba="0.7439661617475152 0.1338779716960094 0.12215586655647542 0.95" /><geom pos="2.5 0.0 0.675" type="box" size="0.1 0.75 0.075" quat="1.0 0.0 0.0 0.0" rgba="0.7755515487961796 0.07035144351446061 0.1540970076893598 0.95" /><geom pos="2.7 0.0 0.8250000000000001" type="box" size="0.1 0.75 0.075" quat="1.0 0.0 0.0 0.0" rgba="0.9140699938574047 0.06498308634593701 0.02094691979665826 0.95" /><geom pos="2.9 0.0 0.9750000000000001" type="box" size="0.1 0.75 0.075" quat="1.0 0.0 0.0 0.0" rgba="0.43449971185918546 0.2504180996024353 0.31508218853837927 0.95" /><geom pos="3.0999999999999996 0.0 1.125" type="box" size="0.1 0.75 0.075" quat="1.0 0.0 0.0 0.0" rgba="0.43190150711416453 0.26503099176137784 0.30306750112445763 0.95" /><geom pos="3.3 0.0 1.275" type="box" size="0.1 0.75 0.075" quat="1.0 0.0 0.0 0.0" rgba="0.9131090922330632 0.03271106750080695 0.054179840266129806 0.95" /><geom pos="3.5 0.0 1.4249999999999998" type="box" size="0.1 0.75 0.075" quat="1.0 0.0 0.0 0.0" rgba="0.19088555366452553 0.27885943723555684 0.5302550090999176 0.95" /><geom pos="5.5 2.4492935982947065e-17 0.075" type="box" size="0.1 0.75 0.075" quat="6.123233995736766e-17 0.0 0.0 1.0" rgba="0.38218346170963846 0.361831071176206 0.25598546711415554 0.95" /><geom pos="5.3 4.898587196589413e-17 0.22499999999999998" type="box" size="0.1 0.75 0.075" quat="6.123233995736766e-17 0.0 0.0 1.0" rgba="0.7634020247975014 0.18014925797268394 0.05644871722981465 0.95" /><geom pos="5.1 7.34788079488412e-17 0.375" type="box" size="0.1 0.75 0.075" quat="6.123233995736766e-17 0.0 0.0 1.0" rgba="0.7545182960762787 0.24394726189889604 0.0015344420248252222 0.95" /><geom pos="4.9 9.797174393178826e-17 0.525" type="box" size="0.1 0.75 0.075" quat="6.123233995736766e-17 0.0 0.0 1.0" rgba="0.19497571449965867 0.32365504620926683 0.4813692392910745 0.95" /><geom pos="4.7 1.2246467991473532e-16 0.675" type="box" size="0.1 0.75 0.075" quat="6.123233995736766e-17 0.0 0.0 1.0" rgba="0.850856338535478 0.031532409572029955 0.117611251892492 0.95" /><geom pos="4.5 1.4695761589768238e-16 0.8250000000000001" type="box" size="0.1 0.75 0.075" quat="6.123233995736766e-17 0.0 0.0 1.0" rgba="0.6934222100773635 0.2558456283420486 0.05073216158058791 0.95" /><geom pos="4.300000000000001 1.7145055188062944e-16 0.9750000000000001" type="box" size="0.1 0.75 0.075" quat="6.123233995736766e-17 0.0 0.0 1.0" rgba="0.10193342540757178 0.5413069698319448 0.3567596047604834 0.95" /><geom pos="4.1000000000000005 1.959434878635765e-16 1.125" type="box" size="0.1 0.75 0.075" quat="6.123233995736766e-17 0.0 0.0 1.0" rgba="0.36194673110267794 0.12477520749800297 0.5132780613993191 0.95" /><geom pos="3.9000000000000004 2.2043642384652356e-16 1.275" type="box" size="0.1 0.75 0.075" quat="6.123233995736766e-17 0.0 0.0 1.0" rgba="0.804383721901977 0.1331696627483209 0.062446615349702056 0.95" /><geom pos="3.7 2.449293598294706e-16 1.4249999999999998" type="box" size="0.1 0.75 0.075" quat="6.123233995736766e-17 0.0 0.0 1.0" rgba="0.9671947700888948 0.0016648014867131067 0.03114042842439213 0.95" /><geom pos="-1.0 0.0 0.0" type="box" size="5.0 2.5 0.015" quat="0.9950041652780258 0.0 0.09983341664682815 0.0" rgba="0.8088683555467092 0.0007840408292459022 0.19034760362404488 0.95" /></worldbody>
+
+  <contact>
+    
+
+    
+    
+
+    
+    
+  </contact>
+
+  <actuator>
+    <motor name="Lleg_hip_p_joint" joint="Lleg_hip_p_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Lleg_hip_r_joint" joint="Lleg_hip_r_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Lleg_hip_y_joint" joint="Lleg_hip_y_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Lleg_knee_joint" joint="Lleg_knee_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Lleg_ankle_p_joint" joint="Lleg_ankle_p_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Lleg_ankle_r_joint" joint="Lleg_ankle_r_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+
+    <motor name="Rleg_hip_p_joint" joint="Rleg_hip_p_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Rleg_hip_r_joint" joint="Rleg_hip_r_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Rleg_hip_y_joint" joint="Rleg_hip_y_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Rleg_knee_joint" joint="Rleg_knee_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Rleg_ankle_p_joint" joint="Rleg_ankle_p_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Rleg_ankle_r_joint" joint="Rleg_ankle_r_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+
+    <motor name="Larm_shoulder_p_joint" joint="Larm_shoulder_p_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+    <motor name="Rarm_shoulder_p_joint" joint="Rarm_shoulder_p_joint" gear="1" ctrllimited="true" ctrlrange="-200 200" />
+  </actuator>
+
+  <sensor>
+    <accelerometer name="imu_acc" site="imu_site" />
+    <gyro name="imu_gyro" site="imu_site" />
+    <framepos name="imu_pos" objtype="site" objname="imu_site" />
+    <framelinvel name="imu_linvel" objtype="site" objname="imu_site" />
+
+    <framequat name="orientation" objtype="site" noise="0.001" objname="imu" />
+    <framepos name="position" objtype="site" noise="0.001" objname="imu" />
+    <gyro name="angular-velocity" site="imu" noise="0.005" cutoff="34.9" />
+    <velocimeter name="linear-velocity" site="imu" noise="0.001" cutoff="30" />
+    <accelerometer name="linear-acceleration" site="imu" noise="0.005" cutoff="157" />
+    <magnetometer name="magnetometer" site="imu" />
+  </sensor>
+</mujoco>

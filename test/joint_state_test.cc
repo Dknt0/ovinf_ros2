@@ -2,11 +2,10 @@
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/joint_state.hpp>
 
-constexpr std::array<std::string_view, 20> joint_name = {
-    "l_hip_y",   "l_hip_r",      "l_hip_p",      "l_knee",       "l_ankle_p",
-    "l_ankle_r", "r_hip_y",      "r_hip_r",      "r_hip_p",      "r_knee",
-    "r_ankle_p", "r_ankle_r",    "l_shoulder_p", "l_shoulder_r", "l_shoulder_y",
-    "l_elbow_p", "r_shoulder_p", "r_shoulder_r", "r_shoulder_y", "r_elbow_p",
+constexpr std::array<std::string_view, 14> joint_name = {
+    "l_hip_p",   "l_hip_r",   "l_hip_y",      "l_knee",       "l_ankle_p",
+    "l_ankle_r", "r_hip_p",   "r_hip_r",      "r_hip_y",      "r_knee",
+    "r_ankle_p", "r_ankle_r", "l_shoulder_p", "r_shoulder_p",
 };
 
 class JointStatePublishTest : public rclcpp::Node {
