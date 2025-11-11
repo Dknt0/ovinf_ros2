@@ -13,9 +13,9 @@ def generate_launch_description():
                 [
                     FindPackageShare("ovinf_ros2"),
                     "urdf",
-                    "fc2",
+                    "hhfc",
                     "urdf",
-                    "bhr8fc2_pos_lim.urdf",
+                    "hhfc.urdf",
                 ]
             ),
         ]
@@ -30,7 +30,7 @@ def generate_launch_description():
     )
 
     bitbot_node = Node(
-        package="bitbot_gz",
+        package="ovinf_ros2",
         executable="main_app",
         name="main_app",
         output="screen",

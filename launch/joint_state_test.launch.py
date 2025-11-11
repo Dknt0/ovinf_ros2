@@ -13,9 +13,9 @@ def generate_launch_description():
                 [
                     FindPackageShare("ovinf_ros2"),
                     "urdf",
-                    "fc2",
+                    "hhfc",
                     "urdf",
-                    "bhr8fc2_pos_lim.urdf",
+                    "hhfc.urdf",
                 ]
             ),
         ]
