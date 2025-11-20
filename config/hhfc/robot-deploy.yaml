@@ -136,10 +136,6 @@ RobotConfig:
     scan_y_bias: -0.75
     scan_height_bias: -0.5
 
-    base_frame_name: base_thorax
-    world_frame_name: world
-    joint_names: *joint_names
-
   executor:
     torque_limit:  # Nm
       l_hip_p: 200.0
@@ -286,12 +282,27 @@ RobotConfig:
       use_absolute_clock: true
       control_period: 0.01
 
-      model_path: "/home/huahui/Project/ovinf_ws/src/ovinf_ros2/checkpoint/hhfc/robust_beta.onnx"
+      # policy_type: "Humanoid"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/slope_alpha.onnx"
+      model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/robust_beta.onnx"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/025r_alpha_msl.onnx"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy.onnx"
       obs_buffer_size: 15
+
+      # Humanoid-gym based walking-standing
+      # policy_type: "HumanoidStand"
+      # stand_threshold: 0.045
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/robust_beta.onnx"
+      # obs_buffer_size: 15
+
+      # Agi-gym DH based walking-standing
+      # policy_type: "HumanoidStand"
       stand_threshold: 0.045
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/dh.onnx"
+      # obs_buffer_size: 66
 
       log_data: true
-      log_dir: "/home/huahui/Project/ovinf_ws/src/ovinf_ros2/log/policy"
+      log_dir: "/home/huahui/Project/bitbot-ovinf/log/policy"
       log_name: "standing"
 
       device: "CPU"
@@ -348,7 +359,12 @@ RobotConfig:
       control_period: 0.01
 
       policy_type: "Locomotion"
-      model_path: "/home/huahui/Project/ovinf_ws/src/ovinf_ros2/checkpoint/hhfc/terrain_msl_t1.onnx"
+      # model_path: "/home/dknt/Project/bitbot-ovinf/checkpoint/hhfc/running_amp.onnx"
+      # model_path: "/home/dknt/Project/bitbot-ovinf/checkpoint/hhfc/policy_amp_smooth.onnx"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy_amp_smooth.onnx"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy_amp_low_zv.onnx"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy_msl_t5.onnx"
+      model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/terrain_msl_t1.onnx"
 
       cycle_time: 0.80
       phase_offset_left: 0.38
@@ -357,7 +373,7 @@ RobotConfig:
       obs_buffer_size: 15
 
       log_data: true
-      log_dir: "/home/huahui/Project/ovinf_ws/src/ovinf_ros2/log/policy"
+      log_dir: "/home/huahui/Project/bitbot-ovinf/log/policy"
       log_name: "walking"
 
       device: "CPU"
@@ -378,6 +394,39 @@ RobotConfig:
       policy_joint_names: *default_policy_joint_names
       policy_default_position: *default_policy_default_position
 
+      # # Humanoid-gym based walking
+      # policy_type: "Humanoid"
+      # use_absolute_clock: true
+      # control_period: 0.01
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/025r_alpha_msl.onnx"
+      # # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy_running.onnx"
+      # # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy_run_3.onnx"
+      # obs_buffer_size: 15
+      #
+      # log_data: true
+      # log_dir: "/home/huahui/Project/bitbot-ovinf/log/policy"
+      # log_name: "walking"
+      #
+      # device: "CPU"
+      # cycle_time: 0.90
+      # # cycle_time: 0.666667
+      # # cycle_time: 0.50
+      # single_obs_size: 47
+      # action_size: 12
+      # action_scale: 0.5
+      # obs_scales:
+      #   ang_vel: 1.0
+      #   lin_vel: 2.0
+      #   command: 1.0
+      #   dof_pos: 1.0
+      #   dof_vel: 0.05
+      #   proj_gravity: 1.0
+      # clip_action: 18.0
+      # realtime: true # false
+      # stick_to_core: 6
+      #
+      # policy_joint_names: *default_policy_joint_names
+      # policy_default_position: *default_policy_default_position
 
   policy_robust:
     p_gains: *default_p_gains
@@ -389,7 +438,13 @@ RobotConfig:
       control_period: 0.01
 
       policy_type: "Humanoid"
-      model_path: "/home/huahui/Project/ovinf_ws/src/ovinf_ros2/checkpoint/hhfc/robust_beta.onnx"
+      # model_path: "/home/dknt/Project/bitbot-ovinf/checkpoint/hhfc/running_amp.onnx"
+      # model_path: "/home/dknt/Project/bitbot-ovinf/checkpoint/hhfc/policy_amp_smooth.onnx"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy_amp_smooth.onnx"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy_amp_low_zv.onnx"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy_msl_t1.onnx"
+      model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy_1_d1.onnx"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/policy_msl_t2.onnx"
 
       cycle_time: 0.8
       phase_offset_left: 0.60
@@ -398,7 +453,7 @@ RobotConfig:
       obs_buffer_size: 15
 
       log_data: true
-      log_dir: "/home/huahui/Project/ovinf_ws/src/ovinf_ros2/log/policy"
+      log_dir: "/home/huahui/Project/bitbot-ovinf/log/policy"
       log_name: "walking"
 
       device: "CPU"
@@ -418,3 +473,35 @@ RobotConfig:
 
       policy_joint_names: *default_policy_joint_names
       policy_default_position: *default_policy_default_position
+
+      # policy_type: "Humanoid"
+      # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/slope_alpha.onnx"
+      # obs_buffer_size: 15
+      # use_absolute_clock: true
+      # control_period: 0.01
+      # # policy_type: "HumanoidStand"
+      # # stand_threshold: 0.045
+      # # model_path: "/home/huahui/Project/bitbot-ovinf/checkpoint/hhfc/robust_beta.onnx"
+      #
+      # log_data: true
+      # log_dir: "/home/huahui/Project/bitbot-ovinf/log/policy"
+      # log_name: "robust"
+      #
+      # device: "CPU"
+      # cycle_time: 0.90
+      # single_obs_size: 47
+      # action_size: 12
+      # action_scale: 0.5
+      # obs_scales:
+      #   ang_vel: 1.0
+      #   lin_vel: 2.0
+      #   command: 1.0
+      #   dof_pos: 1.0
+      #   dof_vel: 0.05
+      #   proj_gravity: 1.0
+      # clip_action: 18.0
+      # realtime: true # false
+      # stick_to_core: 7
+      #
+      # policy_joint_names: *default_policy_joint_names
+      # policy_default_position: *default_policy_default_position

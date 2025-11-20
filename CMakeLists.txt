@@ -20,7 +20,8 @@ include_directories("/home/dknt/Library/cifx/include/")
 link_directories("/home/dknt/Library/cifx/lib/")
 BitbotAddDependency(
   NAME           bitbot_cifx
-  FILE_NAME      "bitbot_cifx-main.zip"
+  # FILE_NAME      "bitbot_cifx-main.zip"
+  FILE_NAME      "bitbot_cifx_zdown.zip"
   FILE_PATH      ${BITBOT_DEPENDENCY_LOCAL_FILE_PATH}
   USE_LOCAL_FILE TRUE
 )
@@ -60,6 +61,15 @@ target_include_directories(main_app PUBLIC
   "/usr/include/eigen3/"
   ${CMAKE_SOURCE_DIR}/include
 )
+target_link_libraries(main_app
+  BitbotCifx
+  BitbotKernel
+  ovinf
+  ${LIBNL_LIBRARIES}
+  "/lib/x86_64-linux-gnu/libnl-cli-3.so"
+  # "/usr/lib/x86_64-linux-gnu/libnl-route-3.a"
+  ${LIBNL_ROUTE_LIBRARIES}
+)
 ament_target_dependencies(main_app
   rclcpp
   sensor_msgs
@@ -67,17 +77,9 @@ ament_target_dependencies(main_app
   grid_map_msgs
   tf2_ros
 )
-target_link_libraries(main_app
-  BitbotCifx
-  BitbotKernel
-  ovinf
-  # ${LIBNL_LIBRARIES}
-  # "/lib/x86_64-linux-gnu/libnl-cli-3.so"
-  # ${LIBNL_ROUTE_LIBRARIES}
-)
 
-target_compile_options(main_app PUBLIC)
-target_compile_features(main_app PUBLIC cxx_std_20)
+# target_compile_options(main_app PUBLIC)
+# target_compile_features(main_app PUBLIC cxx_std_20)
 
 add_executable(joint_state_test test/joint_state_test.cc)
 ament_target_dependencies(joint_state_test

@@ -23,7 +23,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/base_thorax.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/base_thorax.STL" />
       </geometry>
       <material
         name="">
@@ -60,7 +60,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Lleg_hip_p.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Lleg_hip_p.STL" />
       </geometry>
       <material
         name="">
@@ -109,7 +109,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Lleg_hip_r.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Lleg_hip_r.STL" />
       </geometry>
       <material
         name="">
@@ -158,7 +158,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Lleg_hip_y.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Lleg_hip_y.STL" />
       </geometry>
       <material
         name="">
@@ -207,7 +207,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Lleg_knee.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Lleg_knee.STL" />
       </geometry>
       <material
         name="">
@@ -256,7 +256,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Lleg_ankle_p.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Lleg_ankle_p.STL" />
       </geometry>
       <material
         name="">
@@ -305,7 +305,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/whole_foot_visual.stl" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/whole_foot_visual.stl" />
       </geometry>
       <material
         name="">
@@ -316,7 +316,7 @@
     <collision>
       <geometry>
         <mesh
-          filename="../meshes/whole_foot.stl" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/whole_foot.stl" />
       </geometry>
     </collision>
   </link>
@@ -360,7 +360,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Rleg_hip_p.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Rleg_hip_p.STL" />
       </geometry>
       <material
         name="">
@@ -409,7 +409,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Rleg_hip_r.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Rleg_hip_r.STL" />
       </geometry>
       <material
         name="">
@@ -458,7 +458,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Rleg_hip_y.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Rleg_hip_y.STL" />
       </geometry>
       <material
         name="">
@@ -507,7 +507,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Rleg_knee.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Rleg_knee.STL" />
       </geometry>
       <material
         name="">
@@ -556,7 +556,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Rleg_ankle_p.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Rleg_ankle_p.STL" />
       </geometry>
       <material
         name="">
@@ -605,7 +605,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/whole_foot_visual.stl" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/whole_foot_visual.stl" />
       </geometry>
       <material
         name="">
@@ -616,7 +616,7 @@
     <collision>
       <geometry>
         <mesh
-          filename="../meshes/whole_foot.stl" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/whole_foot.stl" />
       </geometry>
     </collision>
   </link>
@@ -660,7 +660,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Larm_shoulder_p.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Larm_shoulder_p.STL" />
       </geometry>
       <material
         name="">
@@ -709,7 +709,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/Rarm_shoulder_p.STL" />
+          filename="package://ovinf_ros2/urdf/hhfc/meshes/Rarm_shoulder_p.STL" />
       </geometry>
       <material
         name="">
